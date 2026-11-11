@@ -15,8 +15,9 @@ It contains three parts:
 
 ## Installation
 1. Clone the repository.
-2. Open the project folder.
-3. Run the following command:
+2. https://github.com/Sana-2113/Task-Manager-API.git
+3. Open the project folder.
+4. Run the following command:
 
 npm install
 
