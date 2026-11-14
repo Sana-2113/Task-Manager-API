@@ -1,5 +1,5 @@
 const express = require ("express");
-const { data } = require("react-router-dom");
+
 
 const app = express();
 
@@ -11,7 +11,7 @@ const PORT = 4000;
 let tasks = [];
 
 
-app.get("/tasks", (req,res) => {
+app.get("/api/v1/tasks", (req,res) => {
 
     res.status(200).json({
         message: "Tasks fetched successfully",
@@ -19,7 +19,7 @@ app.get("/tasks", (req,res) => {
         data: tasks
     });
 });
-app.get("/tasks/:id", (req, res)  => {
+app.get("/api/v1/tasks/:id", (req, res)  => {
  const id = Number(req.params.id);
  const task = tasks.find( t => t.id === id);
  if (!task){
@@ -37,7 +37,7 @@ res.status(200).json({
 });
 
 });
-app.post("/tasks", (req,res) =>{
+app.post("/api/v1/tasks", (req,res) =>{
 
     const title = req.body.title;
     if(!title || typeof title !== "string" || !title.trim()){
@@ -64,7 +64,7 @@ res.status(201).json({
 
 
 });    
-app.put("/tasks/:id", (req,res) => {
+app.put("/api/v1/tasks/:id", (req,res) => {
     const id = Number (req.params.id);
     const task = tasks.find( t => t.id === id);
 if (!task) {
@@ -90,7 +90,7 @@ res.status(200).json({
     data: task 
 });
 });
-app.delete("/tasks/:id", (req,res) =>{
+app.delete("/api/v1/tasks/:id", (req,res) =>{
     const id = Number(req.params.id);
     const taskIndex = tasks.findIndex( t => t.id === id);
 if (taskIndex === -1){
