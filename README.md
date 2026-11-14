@@ -50,6 +50,16 @@ Server runs on port 4000.
 | PUT | /tasks/:id | Update a task |
 | DELETE | /tasks/:id | Delete a task |
 
+### Part C- Express API Endpoints (Port 4000)
+|Method | Endpoint | Description |
+|--------|----------|-------------|
+|GET|/api/v1/tasks|Get all tasks|
+|GET|/api/v1/tasks/:id|Get task by ID|
+|POST|/api/v1/tasks|Create a task|
+|PUT|/api/v1/tasks/:id|Update a task|
+|DELETE|/api/v1/tasks/:id|Delete a task|
+
+
 ## Response Format
 
 All APIs return:
