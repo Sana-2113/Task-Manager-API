@@ -44,7 +44,33 @@ else if (req.url === "/tasks" && req.method === "POST"){
         body += chunk;
     });
     req.on ("end", ()  =>{
-const taskData = JSON.parse(body);
+let taskData;
+
+try {
+  taskData = JSON.parse(body);
+
+  if (
+    !taskData ||
+    typeof taskData.title !== "string" ||
+    !taskData.title.trim()
+  ) {
+    res.writeHead(400, { "Content-Type": "application/json" });
+    res.end(JSON.stringify({
+      message: "Task title is required",
+      success: false,
+      data: null
+    }));
+    return;
+  }
+} catch (error) {
+  res.writeHead(400, { "Content-Type": "application/json" });
+  res.end(JSON.stringify({
+    message: "Invalid JSON",
+    success: false,
+    data: null
+  }));
+  return;
+}
 const newTask = {
     id: tasks.length + 1,
     title: taskData.title
